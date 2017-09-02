@@ -21,6 +21,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     public ArrayList<Movie> movieList = new ArrayList<>();
 
+    public static final int MI_CODIGO_RETORNO=1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (resultCode == RESULT_OK && requestCode == MI_CODIGO_RETORNO){
+
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
