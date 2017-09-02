@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".movieListActivity"></activity>
+
     </application>
 
 </manifest>

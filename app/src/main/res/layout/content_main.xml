@@ -1,36 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_main"
-    tools:context="com.example.rodolfo.firstapp.MainActivity">
+    tools:context="com.example.rodolfo.firstapp.MainActivity"
+    tools:showIn="@layout/activity_main">
+
     <EditText
         android:id="@+id/txtName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Ignorenme chavos"
+        android:hint="Ignorenme"
         android:inputType="textPersonName"
+        android:text="@string/txt_hint"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnClick"
-        android:layout_marginLeft="4dp"
-        />
+        android:layout_marginLeft="16dp"/>
+
 
     <Button
         android:id="@+id/btnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintLeft_toRightOf="@id/txtName"
+        android:text="@string/btnClicktxt"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtName"
+        app:layout_constraintLeft_toRightOf="@+id/txtName"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBaseline_toBaselineOf="@id/txtName"
-        />
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
+
+    <Button
+        android:id="@+id/listViewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ListView"
+        app:layout_constraintTop_toBottomOf="@+id/txtName"
+        tools:layout_editor_absoluteX="27dp"
+        android:layout_marginTop="4dp" />
 
 
 </android.support.constraint.ConstraintLayout>
