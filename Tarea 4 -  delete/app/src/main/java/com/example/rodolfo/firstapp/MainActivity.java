@@ -16,11 +16,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.rodolfo.firstapp.models.Movie;
 import com.example.rodolfo.firstapp.models.MovieAdapter;
+import com.example.rodolfo.firstapp.models.singleton;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public ArrayList<Movie> movieList = new ArrayList<>();
 
+    public ArrayList<Movie> movieList = new ArrayList<Movie>();
     public static final int MI_CODIGO_RETORNO=1;
 
     @Override
@@ -68,22 +69,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 EditText editText = (EditText) findViewById(R.id.txtName);
-                String message = editText.getText().toString();
+                String name = editText.getText().toString();
 
 
                 Movie oMovie = new Movie(
-                        message,
-                        "caca",
-                        "Rodo",
-                        "adsadsds",
+                        name,
+                        "x test",
+                        "y test",
+                        "z test",
                         "05/08/54"
                 );
 
                 movieList.add(oMovie);
+               // Snackbar.make(view, "Agregaste " + message + " A list view", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                movieList.add(oMovie);
+                singleton.getInstance().getMovies().add(oMovie);
                 Intent intentMain = new Intent(getApplicationContext(), movieListActivity.class);
-                intentMain.putExtra("movieList", movieList);
 
-                startActivity(intentMain);
+                startActivityForResult(intentMain, MI_CODIGO_RETORNO);
 
             }
 

@@ -29,8 +29,7 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         TextView txtMovieRuntime = (TextView) oView.findViewById(R.id.txtMovieRuntime);
         TextView txtMovieReleaseDate = (TextView) oView.findViewById(R.id.txtMovieReleaseDate);
 
-
-        Movie oMovie =this.getItem(position);
+        Movie oMovie = this.getItem(position);
         txtMovieDirector.setText(oMovie.getDirector());
         txtMovieName.setText(oMovie.getMovieName());
         txtMovieGenre.setText(oMovie.getGenre());

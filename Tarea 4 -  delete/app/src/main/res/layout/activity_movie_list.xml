@@ -10,5 +10,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/lv_movieList"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#088d8f" /> />
 </RelativeLayout>
