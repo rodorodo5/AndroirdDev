@@ -40,10 +40,11 @@ public class movieListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
 
-        oListView=(ListView) findViewById(R.id.lv_movieList);
-        oMovieAdapter=new MovieAdapter(this);
+        oListView = (ListView) findViewById(R.id.lv_movieList);
+        oMovieAdapter = new MovieAdapter(this);
         oListView.setAdapter(oMovieAdapter);
         oListView.setClickable(true);
+
         oListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {

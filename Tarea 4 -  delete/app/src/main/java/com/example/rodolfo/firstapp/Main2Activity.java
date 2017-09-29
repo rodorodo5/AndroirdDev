@@ -17,18 +17,18 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(activity_main2);
 
-        Intent intent = getIntent();
-        String message = intent.getStringExtra("Mensaje");
-        TextView txtShow = (TextView) findViewById(R.id.txtView);
-        Button btn_close = (Button) findViewById(R.id.btnBack);
-        txtShow.setText(message);
-
-        btn_close.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                finish();
-            }
-        });
+//        Intent intent = getIntent();
+//        String message = intent.getStringExtra("Mensaje");
+//        TextView txtShow = (TextView) findViewById(R.id.txtView);
+//        Button btn_close = (Button) findViewById(R.id.btnBack);
+//        txtShow.setText(message);
+//
+//        btn_close.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                finish();
+//            }
+//        });
     }
 
 

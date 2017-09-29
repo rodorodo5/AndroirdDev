@@ -17,6 +17,7 @@ public class Movie implements Parcelable {
         this.genre = genre;
         this.releaseDate = releaseDate;
     }
+
     public Movie(Parcel in){
         movieName = in.readString();
         runtime =  in.readString();

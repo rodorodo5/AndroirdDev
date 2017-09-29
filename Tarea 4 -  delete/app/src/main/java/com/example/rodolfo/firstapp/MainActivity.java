@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_click = (Button) findViewById(R.id.btnClick);
         Button btn_ListView = (Button) findViewById(R.id.listViewButton);
+
         final EditText txt_name = (EditText) findViewById(R.id.txtName);
 
         setSupportActionBar(toolbar);
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 String message = editText.getText().toString();
                 intentMain.putExtra("Mensaje", message);
                 startActivity(intentMain);
+
 
             }
         });
