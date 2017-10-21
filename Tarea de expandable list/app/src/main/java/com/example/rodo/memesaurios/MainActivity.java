@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,16 +25,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
 
     TextView txtString, txtString2, txtId;
-    Button btnTest, btnSyncPosts, btnSyncComments, btnViewPosts, btnViewComments, btnClear;
+    Button btnTest,btnPostsComments, btnSyncPosts, btnSyncComments, btnViewPosts, btnViewComments, btnClear,buttonPostPost,buttonPostComments;
     DBHelper db;
     ArrayList<Posts> posts;
     ArrayList<Comments> comments;
     String postsUrl, commentsUrl;
+    String urlPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +46,21 @@ public class MainActivity extends AppCompatActivity {
         db = new DBHelper(this);
         txtString = (TextView) findViewById(R.id.textString);
         txtString2 = (TextView) findViewById(R.id.textString2);
-
+        buttonPostComments = btnTest = (Button) findViewById((R.id.buttonPostComments));
         btnTest = (Button) findViewById((R.id.button1));
+        buttonPostPost = (Button) findViewById((R.id.buttonPostPost));
         btnSyncPosts = (Button) findViewById((R.id.buttonSyncP));
         btnSyncComments = (Button) findViewById((R.id.buttonSyncC));
         btnViewPosts = (Button) findViewById((R.id.buttonPosts));
         btnViewComments = (Button) findViewById((R.id.buttonComments));
         btnClear = (Button) findViewById((R.id.buttonClear));
         posts = new ArrayList<Posts>();
+        btnPostsComments = (Button) findViewById(R.id.buttonPostsComments);
         comments = new ArrayList<Comments>();
         final RequestQueue queue = Volley.newRequestQueue(this);
         postsUrl = "http://jsonplaceholder.typicode.com/posts";
         commentsUrl = "http://jsonplaceholder.typicode.com/comments";
+        urlPost ="http://107.170.247.123:2403/posts";
 
 
 
@@ -104,6 +111,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+       final StringRequest strRequest = new StringRequest(Request.Method.POST, urlPost,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response)
+                    {
+                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Posts posts =  new Posts();
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("postid", String.valueOf(1));
+
+                params.put("title", "memesaurio");
+                params.put("body", "RODOLFO RODRIGUEZZZZZZZZZZ");
+                return params;
+            }
+        };
+
+
         btnSyncPosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,6 +153,15 @@ public class MainActivity extends AppCompatActivity {
                 db.close();
                 queue.add(postsArrayRequest);
                 Snackbar.make(view, "Se sincronizaron los posts.", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
+
+        buttonPostPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "POSTEANDO posts", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                queue.add(strRequest);
+                Snackbar.make(view, "Se POSTEARON los posts", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
             }
         });
 
@@ -146,6 +195,19 @@ public class MainActivity extends AppCompatActivity {
                 db.open();
                 intent.putExtra("Parcel", db.getAllComments());
                 db.close();
+                startActivity(intent);
+            }
+        });
+        btnPostsComments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.open();
+                posts = db.getAllPosts();
+                comments = db.getAllComments();
+                db.close();
+                Intent intent = new Intent(getApplicationContext(), expander.class);
+                intent.putExtra("Posts", posts);
+                intent.putExtra("Comments", comments);
                 startActivity(intent);
             }
         });

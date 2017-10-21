@@ -84,4 +84,33 @@
         android:layout_alignEnd="@+id/textString2"
         android:layout_alignRight="@+id/textString2"/>
 
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POST - Posts"
+        android:id="@+id/buttonPostPost"
+        android:layout_alignBaseline="@+id/buttonPostComments"
+        android:layout_alignBottom="@+id/buttonPostComments"
+        android:layout_alignLeft="@+id/buttonSyncC"
+        android:layout_alignStart="@+id/buttonSyncC" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POST - Comment"
+        android:id="@+id/buttonPostComments"
+        android:layout_below="@+id/buttonComments"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver expandable list"
+        android:id="@+id/buttonPostsComments"
+        android:layout_below="@+id/buttonSyncC"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
